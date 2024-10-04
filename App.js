@@ -1,12 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+
+import Navigators from './components/nba/Navigators';
+import ControlW from './components/wnba/ControlW';
+import ControlF from './components/AmericanFootball/ControlF';
+import HomeControl from './components/HomeControl';
+import Home from './components/Home';
+
 
 export default function App() {
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+
+      <HomeControl />
+
     </View>
+
   );
 }
 
@@ -15,6 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+
   },
 });
