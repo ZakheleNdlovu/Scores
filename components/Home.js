@@ -15,6 +15,18 @@ const Home = ({ state, setState }) => {
             <TouchableOpacity onPress={() => setState(state = 3)}>
                 <View style={styles.box}><Text style={styles.text}>WNBA</Text></View>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => setState(state = 4)}>
+                <View style={styles.box}><Text style={styles.text}>MLS</Text></View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setState(state = 5)}>
+                <View style={styles.box}><Text style={styles.text}>EPL</Text></View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setState(state = 6)}>
+                <View style={styles.box}><Text style={styles.text}>LaLIGA</Text></View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setState(state = 7)}>
+                <View style={styles.box}><Text style={styles.text}>PSL</Text></View>
+            </TouchableOpacity>
         </View>
     )
 
@@ -24,7 +36,7 @@ export default Home
 
 const styles = StyleSheet.create({
     header: {
-        height: 60,
+        height: 70,
         flexDirection: 'row',
         width: 360,
         justifyContent: 'space-evenly',
@@ -39,7 +51,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'black',
-        width: 118,
+        padding: 3,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5

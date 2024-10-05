@@ -1,10 +1,11 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
-import Headlines from './Headlines'
-import Scores from './Scores'
-import Navigation from './Navigation'
 
-const ControlW = () => {
+import NavigateMLS from './NavigateMLS'
+import HeadlinesMLS from './HeadlinesMLS'
+import GamesMLS from './GamesMLS'
+
+const ControlMLS = () => {
 
     const [state, setState] = useState(0)
 
@@ -12,10 +13,10 @@ const ControlW = () => {
         return (
             <View>
                 <View>
-                    <Navigation state={state} setState={setState} />
+                    <NavigateMLS state={state} setState={setState} />
                 </View>
 
-                <Headlines />
+                <HeadlinesMLS />
 
             </View>
         )
@@ -23,11 +24,11 @@ const ControlW = () => {
     else if (state === 2) {
         return (
             <View>
-                <Navigation state={state} setState={setState} />
-                <Scores />
+                <NavigateMLS state={state} setState={setState} />
+                <GamesMLS />
             </View>
         )
     }
 }
 
-export default ControlW
+export default ControlMLS

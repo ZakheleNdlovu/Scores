@@ -36,7 +36,7 @@ const Games = () => {
     return (
         <View style={{ alignItems: 'center' }}>
             <FlatList data={data} keyExtractor={(item) => item.id.toString()} renderItem={({ item }) => {
-                if (item.competitions[0].status.clock === 0) {
+                if (item.competitions[0].attendance === 0) {
                     return (
                         <View style={{ paddingBottom: 5 }}>
                             <View style={styles.view}>
@@ -108,7 +108,7 @@ const Games = () => {
 
                                 </View>
                                 <View style={{ height: 40, width: 330, alignItems: 'center', justifyContent: 'center' }}>
-                                    <Text >{item.competitions[0].status.displayClock}</Text>
+                                    <Text >{item.competitions[0].status.type.detail}</Text>
                                     <Text>{item.season.year}  {item.season.slug}</Text>
                                 </View>
 

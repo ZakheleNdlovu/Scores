@@ -49,6 +49,7 @@ const Headlines = () => {
                                 <View style={{ width: 335, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', borderRadius: 5 }}>
                                     <Image source={{ uri: item.images[0].url }} width={180} height={130} />
                                 </View>
+                                <Text >ESPN</Text>
                                 <Text style={styles.header}>{item.categories[2].description}</Text>
                                 <Text style={styles.headline}>{item.headline}</Text>
                                 <Text>{item.description}</Text>

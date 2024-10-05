@@ -6,6 +6,9 @@ import ControlW from './components/wnba/ControlW';
 import ControlF from './components/AmericanFootball/ControlF';
 import HomeControl from './components/HomeControl';
 import Home from './components/Home';
+import GamesMLS from './components/mls/GamesMLS';
+import ControlMLS from './components/mls/ControlMLS';
+import GamesStatsNFL from './components/AmericanFootball/GameStatsNFL';
 
 
 export default function App() {
@@ -13,6 +16,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+
 
       <HomeControl />
 

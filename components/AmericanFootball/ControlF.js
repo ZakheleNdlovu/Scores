@@ -14,8 +14,6 @@ const ControlF = () => {
             <View>
 
                 <Navigate state={state} setState={setState} />
-
-
                 <TopHeadlines />
 
             </View>

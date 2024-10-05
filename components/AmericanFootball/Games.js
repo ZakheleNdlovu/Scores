@@ -37,7 +37,7 @@ const Games = () => {
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id.toString()} renderItem={({ item }) => {
-                    if (item.competitions[0].status.displayClock === "0:00") {
+                    if (item.competitions[0].attendance === 0) {
                         return (
                             <View style={{ paddingBottom: 5 }}>
                                 <View style={styles.view}>

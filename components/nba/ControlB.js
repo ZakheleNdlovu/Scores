@@ -16,7 +16,7 @@ const ControlB = () => {
                 </View>
 
                 <News />
-                <View style={{ height: 50 }}></View>
+
             </View>
         )
     }
