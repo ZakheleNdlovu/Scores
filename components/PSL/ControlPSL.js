@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import NavigatePSL from './NavigatePSL'
 import HeadlinesPSL from './HeadlinesPSL'
 import GamesPSL from './GamesPSL'
+import PSLTable from './PSLTable'
 
 const ControlPSL = () => {
 
@@ -10,7 +11,7 @@ const ControlPSL = () => {
 
     if (state === 0 || state === 1) {
         return (
-            <View>
+            <View style={{ height: 600 }}>
                 <View>
                     <NavigatePSL state={state} setState={setState} />
                 </View>
@@ -22,9 +23,17 @@ const ControlPSL = () => {
     }
     else if (state === 2) {
         return (
-            <View>
+            <View style={{ height: 600 }}>
                 <NavigatePSL state={state} setState={setState} />
                 <GamesPSL />
+            </View>
+        )
+    }
+    else if (state === 3) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigatePSL state={state} setState={setState} />
+                <PSLTable />
             </View>
         )
     }

@@ -39,7 +39,7 @@ const HeadlinesLaLiga = () => {
     }
 
     return (
-        <View>
+        <View style={{ width: 357, alignItems: 'center' }}>
             <FlatList
                 data={news}
                 renderItem={({ item }) => {
@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         justifyContent: 'center',
         alignItems: 'center'
-
     },
     box: {
         width: 357,
@@ -84,7 +83,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: 'black',
-        borderRadius: 6
+        borderRadius: 6,
+
+
     },
     header: {
         fontSize: 25,

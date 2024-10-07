@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-const TopHeadlines = () => {
+const LHeadlines = () => {
 
     const [news, setNews] = useState([])
     const [error, setError] = useState('')
@@ -11,10 +11,9 @@ const TopHeadlines = () => {
 
         const getData = async () => {
             try {
-                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/nfl/news')
+                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/news')
                 const news = await response.json()
                 setNews(news.articles)
-
 
             }
             catch (error) {
@@ -47,13 +46,13 @@ const TopHeadlines = () => {
                     return (
                         <View style={styles.container}>
                             <View style={styles.box}>
-                                <View style={{ width: 330, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-                                    <Image source={{ uri: item.images[0].url }} width={180} height={130} />
+                                <View style={{ width: 335, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', borderRadius: 5 }}>
+
                                 </View>
                                 <Text >ESPN</Text>
-                                <Text style={styles.header}>{item.categories[0].description}</Text>
                                 <Text style={styles.headline}>{item.headline}</Text>
                                 <Text>{item.description}</Text>
+
                                 <View style={styles.link}>
                                     <TouchableOpacity onPress={() => Linking.openURL(item.links.web.href)}>
                                         <Text style={{ color: 'blue', fontSize: 20 }}>more...</Text>
@@ -63,14 +62,13 @@ const TopHeadlines = () => {
                         </View>
                     )
                 }} />
-
         </View>
     )
 
 
 }
 
-export default TopHeadlines
+export default LHeadlines
 
 const styles = StyleSheet.create({
     container: {
@@ -93,7 +91,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     headline: {
-        fontSize: 19,
+        fontSize: 22,
         textDecorationLine: 'underline'
     },
     link: {

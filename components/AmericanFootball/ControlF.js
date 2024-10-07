@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import TopHeadlines from './TopHeadlines'
 import Games from './Games'
 import Navigate from './Navigate'
-import { SafeAreaView } from 'react-native'
+
+import NFLStandings from './NFLStandings'
 
 const ControlF = () => {
 
@@ -11,7 +12,7 @@ const ControlF = () => {
 
     if (state === 0 || state === 1) {
         return (
-            <View>
+            <View style={{ height: 620 }}>
 
                 <Navigate state={state} setState={setState} />
                 <TopHeadlines />
@@ -21,9 +22,17 @@ const ControlF = () => {
     }
     else if (state === 2) {
         return (
-            <View>
+            <View style={{ height: 620 }}>
                 <Navigate state={state} setState={setState} />
                 <Games />
+            </View>
+        )
+    }
+    else if (state === 3) {
+        return (
+            <View style={{ height: 620 }}>
+                <Navigate state={state} setState={setState} />
+                <NFLStandings />
             </View>
         )
     }

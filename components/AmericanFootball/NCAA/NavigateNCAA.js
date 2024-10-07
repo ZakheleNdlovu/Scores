@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 
-const NavigateMLS = ({ state, setState }) => {
+const NavigateNCAA = ({ state, setState }) => {
 
     return (
         <View style={styles.navbar}>
@@ -19,7 +19,7 @@ const NavigateMLS = ({ state, setState }) => {
     )
 }
 
-export default NavigateMLS
+export default NavigateNCAA
 
 const styles = StyleSheet.create({
     navbar: {

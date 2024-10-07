@@ -1,7 +1,7 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-const Games = () => {
+const NCAAGames = () => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -10,7 +10,7 @@ const Games = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard')
+                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard')
                 const data = await response.json()
                 setData(data.events)
 
@@ -37,7 +37,7 @@ const Games = () => {
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id.toString()} renderItem={({ item }) => {
-                    if (item.competitions[0].status.type.description != "In Progress") {
+                    if (item.competitions[0].status.type.description != "In Progress ") {
                         return (
                             <View style={{ paddingBottom: 5 }}>
                                 <View style={styles.view}>
@@ -124,7 +124,7 @@ const Games = () => {
     )
 }
 
-export default Games
+export default NCAAGames
 
 const styles = StyleSheet.create({
     view: {

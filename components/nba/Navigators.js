@@ -20,7 +20,7 @@ export default Navigators
 
 const styles = StyleSheet.create({
     navbar: {
-        height: 40,
+        height: 30,
         width: 357,
         flexDirection: 'row',
         alignItems: 'center',
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'black',
-        borderRadius: 5
+        borderRadius: 5,
+        backgroundColor: 'lightblue'
     }
 })

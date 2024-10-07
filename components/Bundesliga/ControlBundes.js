@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
-import NavigateEPL from './NavigateEPL'
-import HeadlinesEPL from './HeadlinesEPL'
-import GamesEPL from './GamesEPL'
-import EPLTable from './EPLTable'
+import NavigateBundesliga from './NavigateBundesliga'
+import BTable from './BTable'
+import BGames from './BGames'
+import BHeadlines from './BHeadlines'
 
-const ControlEPL = () => {
+const ControlBundes = () => {
 
     const [state, setState] = useState(0)
 
@@ -13,9 +13,9 @@ const ControlEPL = () => {
         return (
             <View style={{ height: 600 }}>
                 <View>
-                    <NavigateEPL state={state} setState={setState} />
+                    <NavigateBundesliga state={state} setState={setState} />
                 </View>
-                <HeadlinesEPL />
+                <BHeadlines />
 
 
             </View>
@@ -24,19 +24,19 @@ const ControlEPL = () => {
     else if (state === 2) {
         return (
             <View style={{ height: 600 }}>
-                <NavigateEPL state={state} setState={setState} />
-                <GamesEPL />
+                <NavigateBundesliga state={state} setState={setState} />
+                <BGames />
             </View>
         )
     }
     else if (state === 3) {
         return (
             <View style={{ height: 600 }}>
-                <NavigateEPL state={state} setState={setState} />
-                <EPLTable />
+                <NavigateBundesliga state={state} setState={setState} />
+                <BTable />
             </View>
         )
     }
 }
 
-export default ControlEPL
+export default ControlBundes

@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
-import NavigateEPL from './NavigateEPL'
-import HeadlinesEPL from './HeadlinesEPL'
-import GamesEPL from './GamesEPL'
-import EPLTable from './EPLTable'
+import NavigateL from './NavigateL'
+import LTable from './LTable'
+import LGames from './LGames'
+import LHeadlines from './LHeadlines'
 
-const ControlEPL = () => {
+const LControl = () => {
 
     const [state, setState] = useState(0)
 
@@ -13,9 +13,9 @@ const ControlEPL = () => {
         return (
             <View style={{ height: 600 }}>
                 <View>
-                    <NavigateEPL state={state} setState={setState} />
+                    <NavigateL state={state} setState={setState} />
                 </View>
-                <HeadlinesEPL />
+                <LHeadlines />
 
 
             </View>
@@ -24,19 +24,19 @@ const ControlEPL = () => {
     else if (state === 2) {
         return (
             <View style={{ height: 600 }}>
-                <NavigateEPL state={state} setState={setState} />
-                <GamesEPL />
+                <NavigateL state={state} setState={setState} />
+                <LGames />
             </View>
         )
     }
     else if (state === 3) {
         return (
             <View style={{ height: 600 }}>
-                <NavigateEPL state={state} setState={setState} />
-                <EPLTable />
+                <NavigateL state={state} setState={setState} />
+                <LTable />
             </View>
         )
     }
 }
 
-export default ControlEPL
+export default LControl

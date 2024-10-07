@@ -1,11 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 
-const NavigateMLS = ({ state, setState }) => {
+const NavigateSerieA = ({ state, setState }) => {
 
     return (
         <View style={styles.navbar}>
-            <TouchableOpacity onPress={() => setState(state = 0)}>
+            <TouchableOpacity onPress={() => setState(state = 1)}>
                 <Text>Headlines</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setState(state = 2)}>
@@ -19,7 +19,7 @@ const NavigateMLS = ({ state, setState }) => {
     )
 }
 
-export default NavigateMLS
+export default NavigateSerieA
 
 const styles = StyleSheet.create({
     navbar: {

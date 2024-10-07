@@ -7,26 +7,17 @@ const Home = ({ state, setState }) => {
     return (
         <View style={styles.header}>
             <TouchableOpacity onPress={() => setState(state = 1)}>
-                <View style={styles.box}><Text style={styles.text}>NFL</Text></View>
+                <View style={styles.box}><Text style={styles.text}>A.Football</Text></View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setState(state = 2)}>
-                <View style={styles.box}><Text style={styles.text}>NBA</Text></View>
+                <View style={styles.box}><Text style={styles.text}>Football</Text></View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setState(state = 3)}>
-                <View style={styles.box}><Text style={styles.text}>WNBA</Text></View>
+                <View style={styles.box}><Text style={styles.text}>Basketball</Text></View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => setState(state = 4)}>
-                <View style={styles.box}><Text style={styles.text}>MLS</Text></View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setState(state = 5)}>
-                <View style={styles.box}><Text style={styles.text}>EPL</Text></View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setState(state = 6)}>
-                <View style={styles.box}><Text style={styles.text}>LaLIGA</Text></View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setState(state = 7)}>
-                <View style={styles.box}><Text style={styles.text}>PSL</Text></View>
-            </TouchableOpacity>
+
+
+
         </View>
     )
 
@@ -48,6 +39,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     box: {
+        width: 120,
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'black',

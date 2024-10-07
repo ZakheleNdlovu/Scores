@@ -9,6 +9,8 @@ import Home from './components/Home';
 import GamesMLS from './components/mls/GamesMLS';
 import ControlMLS from './components/mls/ControlMLS';
 import GamesStatsNFL from './components/AmericanFootball/GameStatsNFL';
+import EPLTeable from './components/EPL/EPLTable';
+import NFLStandings from './components/AmericanFootball/NFLStandings';
 
 
 export default function App() {

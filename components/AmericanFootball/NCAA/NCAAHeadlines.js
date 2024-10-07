@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-const TopHeadlines = () => {
+const NCAAHeadlines = () => {
 
     const [news, setNews] = useState([])
     const [error, setError] = useState('')
@@ -11,7 +11,7 @@ const TopHeadlines = () => {
 
         const getData = async () => {
             try {
-                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/nfl/news')
+                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/college-football/news')
                 const news = await response.json()
                 setNews(news.articles)
 
@@ -70,7 +70,7 @@ const TopHeadlines = () => {
 
 }
 
-export default TopHeadlines
+export default NCAAHeadlines
 
 const styles = StyleSheet.create({
     container: {

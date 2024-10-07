@@ -11,6 +11,9 @@ const NavigateLaLiga = ({ state, setState }) => {
             <TouchableOpacity onPress={() => setState(state = 2)}>
                 <Text>Games</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => setState(state = 3)}>
+                <Text>Standings</Text>
+            </TouchableOpacity>
 
         </View>
     )
@@ -20,7 +23,7 @@ export default NavigateLaLiga
 
 const styles = StyleSheet.create({
     navbar: {
-        height: 40,
+        height: 30,
         width: 357,
         flexDirection: 'row',
         alignItems: 'center',
@@ -28,6 +31,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'black',
-        borderRadius: 5
+        borderRadius: 5,
+        backgroundColor: 'lightblue'
     }
 })

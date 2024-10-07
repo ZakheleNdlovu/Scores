@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import NavigateMLS from './NavigateMLS'
 import HeadlinesMLS from './HeadlinesMLS'
 import GamesMLS from './GamesMLS'
+import MLSTable from './MLSTable'
 
 const ControlMLS = () => {
 
@@ -11,7 +12,7 @@ const ControlMLS = () => {
 
     if (state === 0 || state === 1) {
         return (
-            <View>
+            <View style={{ height: 600 }}>
                 <View>
                     <NavigateMLS state={state} setState={setState} />
                 </View>
@@ -23,9 +24,17 @@ const ControlMLS = () => {
     }
     else if (state === 2) {
         return (
-            <View>
+            <View style={{ height: 600 }}>
                 <NavigateMLS state={state} setState={setState} />
                 <GamesMLS />
+            </View>
+        )
+    }
+    else if (state === 3) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateMLS state={state} setState={setState} />
+                <MLSTable />
             </View>
         )
     }
