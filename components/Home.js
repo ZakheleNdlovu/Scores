@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         width: 360,
         justifyContent: 'space-evenly',
         alignItems: 'flex-end',
-        backgroundColor: 'tomato'
+        backgroundColor: 'lightblue'
     },
     text: {
         fontSize: 20,
@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
         width: 120,
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: 'lightblue',
         padding: 3,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 5
+        borderRadius: 5,
+        backgroundColor: 'limegreen'
     }
 })

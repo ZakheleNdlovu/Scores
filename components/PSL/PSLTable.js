@@ -470,8 +470,10 @@ const styles = StyleSheet.create({
         width: 357,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: 'black',
+        borderColor: 'white',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'lightblue',
+        borderRadius: 5
     }
 })

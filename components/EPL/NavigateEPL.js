@@ -5,15 +5,26 @@ const NavigateEPL = ({ state, setState }) => {
 
     return (
         <View style={styles.navbar}>
-            <TouchableOpacity onPress={() => setState(state = 0)}>
-                <Text>Headlines</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setState(state = 2)}>
-                <Text>Games</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setState(state = 3)}>
-                <Text>Standings</Text>
-            </TouchableOpacity>
+            <View style={styles.box}>
+                <TouchableOpacity onPress={() => setState(state = 0)}>
+                    <Text>Headlines</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.box}>
+                <TouchableOpacity onPress={() => setState(state = 2)}>
+                    <Text>Games</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.box}>
+                <TouchableOpacity onPress={() => setState(state = 3)}>
+                    <Text>Standings</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.box}>
+                <TouchableOpacity onPress={() => setState(state = 4)}>
+                    <Text>Teams</Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     )
@@ -24,14 +35,22 @@ export default NavigateEPL
 const styles = StyleSheet.create({
     navbar: {
         height: 30,
-        width: 357,
+        width: 359,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
+        backgroundColor: 'lightblue',
+
+    },
+    box: {
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: 'gray',
+        width: 88,
+        height: 28,
         borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: 'lightblue'
     }
 })

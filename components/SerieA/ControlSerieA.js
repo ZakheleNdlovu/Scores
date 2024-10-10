@@ -4,6 +4,7 @@ import NavigateSerieA from './NavigateSerieA'
 import SerieAHeadlines from './SerieAHeadlines'
 import SerieAGames from './SerieAGames'
 import SerieATable from './SerieATable'
+import SerieATeams from './SerieATeams'
 
 const ControlSerieA = () => {
 
@@ -44,6 +45,14 @@ const ControlSerieA = () => {
             <View style={{ height: 600 }}>
                 <NavigateSerieA state={state} setState={setState} />
                 <SerieATable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateSerieA state={state} setState={setState} />
+                <SerieATeams />
             </View>
         )
     }

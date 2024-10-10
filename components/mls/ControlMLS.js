@@ -5,6 +5,7 @@ import NavigateMLS from './NavigateMLS'
 import HeadlinesMLS from './HeadlinesMLS'
 import GamesMLS from './GamesMLS'
 import MLSTable from './MLSTable'
+import MLSTeams from './MLSTeams'
 
 const ControlMLS = () => {
 
@@ -35,6 +36,14 @@ const ControlMLS = () => {
             <View style={{ height: 600 }}>
                 <NavigateMLS state={state} setState={setState} />
                 <MLSTable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateMLS state={state} setState={setState} />
+                <MLSTeams />
             </View>
         )
     }

@@ -43,7 +43,7 @@ const LTable = () => {
                         <View style={{ alignItems: 'center' }}>
                             <View style={styles.tableHeader}>
                                 <Text>TEAM NAME</Text>
-                                <View style={{ width: 120 }}></View>
+                                <View style={{ width: 115 }}></View>
                                 <Text>PTS    W     L    D    GP   GF   GA</Text>
                             </View>
                             <View style={{ height: 1 }}></View>
@@ -514,14 +514,17 @@ const styles = StyleSheet.create({
         width: 357,
         alignItems: 'center',
         backgroundColor: 'lightgray',
-        paddingLeft: 5
+        paddingLeft: 5,
+        borderRadius: 5
     },
     tableRow: {
         width: 357,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: 'black',
+        borderColor: 'white',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'lightblue',
+        borderRadius: 5
     }
 })

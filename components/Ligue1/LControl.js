@@ -4,6 +4,7 @@ import NavigateL from './NavigateL'
 import LTable from './LTable'
 import LGames from './LGames'
 import LHeadlines from './LHeadlines'
+import Ligue1Teams from './Ligue1Teams'
 
 const LControl = () => {
 
@@ -34,6 +35,14 @@ const LControl = () => {
             <View style={{ height: 600 }}>
                 <NavigateL state={state} setState={setState} />
                 <LTable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateL state={state} setState={setState} />
+                <Ligue1Teams />
             </View>
         )
     }

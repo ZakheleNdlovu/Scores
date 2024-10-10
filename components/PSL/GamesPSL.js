@@ -113,7 +113,6 @@ const GamesPSL = () => {
                                     <Text>{item.season.year}  {item.season.slug}</Text>
                                 </View>
 
-
                             </View>
                         </View>
                     )

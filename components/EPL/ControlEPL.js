@@ -4,6 +4,7 @@ import NavigateEPL from './NavigateEPL'
 import HeadlinesEPL from './HeadlinesEPL'
 import GamesEPL from './GamesEPL'
 import EPLTable from './EPLTable'
+import EPLTeams from './EPLTeams'
 
 const ControlEPL = () => {
 
@@ -34,6 +35,14 @@ const ControlEPL = () => {
             <View style={{ height: 600 }}>
                 <NavigateEPL state={state} setState={setState} />
                 <EPLTable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateEPL state={state} setState={setState} />
+                <EPLTeams />
             </View>
         )
     }

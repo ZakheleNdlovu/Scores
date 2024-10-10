@@ -4,6 +4,7 @@ import NavigatePSL from './NavigatePSL'
 import HeadlinesPSL from './HeadlinesPSL'
 import GamesPSL from './GamesPSL'
 import PSLTable from './PSLTable'
+import PSLTeams from './PSLTeams'
 
 const ControlPSL = () => {
 
@@ -34,6 +35,14 @@ const ControlPSL = () => {
             <View style={{ height: 600 }}>
                 <NavigatePSL state={state} setState={setState} />
                 <PSLTable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigatePSL state={state} setState={setState} />
+                <PSLTeams />
             </View>
         )
     }

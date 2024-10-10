@@ -64,25 +64,28 @@ const styles = StyleSheet.create({
         width: 359,
         alignItems: 'center',
         justifyContent: 'center',
-        overflow: 'scroll'
+        overflow: 'scroll',
+        backgroundColor: 'lightblue'
     },
     text: {
         fontSize: 17,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: 'black',
+        borderColor: 'lightblue',
         width: 89,
         height: 25,
         justifyContent: 'center',
+
         alignItems: 'center',
-        backgroundColor: 'lightgray',
-        borderRadius: 5
+        backgroundColor: 'lightgreen',
+        borderRadius: 5,
+
     },
     text1: {
         fontSize: 17,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: 'black',
+        borderColor: 'lightblue',
         width: 89,
         height: 25,
         justifyContent: 'center',

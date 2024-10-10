@@ -4,6 +4,7 @@ import NavigateLaLiga from './NavigateLaLiga'
 import HeadlinesLaLiga from './HeadlinesLaLiga'
 import GamesLaLiga from './GamesLaLiga'
 import LaLIGATable from './LaLIGATable'
+import LaLIGATeams from './LaLIGATeams'
 
 const ControlLaLiga = () => {
 
@@ -34,6 +35,14 @@ const ControlLaLiga = () => {
             <View style={{ height: 600 }}>
                 <NavigateLaLiga state={state} setState={setState} />
                 <LaLIGATable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateLaLiga state={state} setState={setState} />
+                <LaLIGATeams />
             </View>
         )
     }

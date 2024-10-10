@@ -72,7 +72,7 @@ export default SerieAHeadlines
 
 const styles = StyleSheet.create({
     container: {
-        width: 357,
+        width: 359,
         paddingBottom: 5,
         justifyContent: 'center',
         alignItems: 'center'

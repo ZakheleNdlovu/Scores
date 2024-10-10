@@ -1,17 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 
-import Navigators from './components/nba/Navigators';
-import ControlW from './components/wnba/ControlW';
-import ControlF from './components/AmericanFootball/ControlF';
-import HomeControl from './components/HomeControl';
-import Home from './components/Home';
-import GamesMLS from './components/mls/GamesMLS';
-import ControlMLS from './components/mls/ControlMLS';
-import GamesStatsNFL from './components/AmericanFootball/GameStatsNFL';
-import EPLTeable from './components/EPL/EPLTable';
-import NFLStandings from './components/AmericanFootball/NFLStandings';
-
+import LTeams from './components/Bundesliga/LTeams';
+import MLSTeams from './components/mls/MLSTeams';
+import HomeControl from './components/HomeControl'
 
 export default function App() {
 

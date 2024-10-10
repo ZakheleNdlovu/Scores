@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import React, { useState } from 'react'
 import Home from './Home'
 import ControlB from './nba/ControlB'
@@ -20,7 +20,7 @@ const HomeControl = () => {
             <View >
                 <Home state={state1} setState={setState1} />
                 <View style={{ width: 350, height: 600, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>Wano Scores</Text>
+
                 </View>
 
             </View>

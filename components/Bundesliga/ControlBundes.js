@@ -4,6 +4,7 @@ import NavigateBundesliga from './NavigateBundesliga'
 import BTable from './BTable'
 import BGames from './BGames'
 import BHeadlines from './BHeadlines'
+import LTeams from './LTeams'
 
 const ControlBundes = () => {
 
@@ -34,6 +35,14 @@ const ControlBundes = () => {
             <View style={{ height: 600 }}>
                 <NavigateBundesliga state={state} setState={setState} />
                 <BTable />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 600 }}>
+                <NavigateBundesliga state={state} setState={setState} />
+                <LTeams />
             </View>
         )
     }
