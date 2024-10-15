@@ -5,6 +5,7 @@ import HeadlinesEPL from './HeadlinesEPL'
 import GamesEPL from './GamesEPL'
 import EPLTable from './EPLTable'
 import EPLTeams from './EPLTeams'
+import PremGames from './PremGames'
 
 const ControlEPL = () => {
 
@@ -26,7 +27,7 @@ const ControlEPL = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateEPL state={state} setState={setState} />
-                <GamesEPL />
+                <PremGames />
             </View>
         )
     }

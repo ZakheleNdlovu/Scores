@@ -6,6 +6,7 @@ import HeadlinesMLS from './HeadlinesMLS'
 import GamesMLS from './GamesMLS'
 import MLSTable from './MLSTable'
 import MLSTeams from './MLSTeams'
+import MLSGames from './MLSGames'
 
 const ControlMLS = () => {
 
@@ -27,7 +28,7 @@ const ControlMLS = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateMLS state={state} setState={setState} />
-                <GamesMLS />
+                <MLSGames />
             </View>
         )
     }

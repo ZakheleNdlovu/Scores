@@ -2,9 +2,9 @@ import { View, Text } from 'react-native'
 import React, { useState } from 'react'
 import NavigateL from './NavigateL'
 import LTable from './LTable'
-import LGames from './LGames'
 import LHeadlines from './LHeadlines'
 import Ligue1Teams from './Ligue1Teams'
+import L1Games from './L1Games'
 
 const LControl = () => {
 
@@ -26,7 +26,7 @@ const LControl = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateL state={state} setState={setState} />
-                <LGames />
+                <L1Games />
             </View>
         )
     }

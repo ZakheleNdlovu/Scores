@@ -5,6 +5,7 @@ import HeadlinesLaLiga from './HeadlinesLaLiga'
 import GamesLaLiga from './GamesLaLiga'
 import LaLIGATable from './LaLIGATable'
 import LaLIGATeams from './LaLIGATeams'
+import LigaGames from './LigaGames'
 
 const ControlLaLiga = () => {
 
@@ -26,7 +27,7 @@ const ControlLaLiga = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateLaLiga state={state} setState={setState} />
-                <GamesLaLiga />
+                <LigaGames />
             </View>
         )
     }

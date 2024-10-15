@@ -5,6 +5,7 @@ import SerieAHeadlines from './SerieAHeadlines'
 import SerieAGames from './SerieAGames'
 import SerieATable from './SerieATable'
 import SerieATeams from './SerieATeams'
+import SAGames from './SAGames'
 
 const ControlSerieA = () => {
 
@@ -36,7 +37,7 @@ const ControlSerieA = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateSerieA state={state} setState={setState} />
-                <SerieAGames />
+                <SAGames />
             </View>
         )
     }

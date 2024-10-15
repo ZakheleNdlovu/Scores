@@ -5,6 +5,7 @@ import BTable from './BTable'
 import BGames from './BGames'
 import BHeadlines from './BHeadlines'
 import LTeams from './LTeams'
+import BunGames from './BunGames'
 
 const ControlBundes = () => {
 
@@ -26,7 +27,7 @@ const ControlBundes = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateBundesliga state={state} setState={setState} />
-                <BGames />
+                <BunGames />
             </View>
         )
     }

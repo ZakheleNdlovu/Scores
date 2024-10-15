@@ -5,6 +5,7 @@ import HeadlinesPSL from './HeadlinesPSL'
 import GamesPSL from './GamesPSL'
 import PSLTable from './PSLTable'
 import PSLTeams from './PSLTeams'
+import PSLGames from './PSLGames'
 
 const ControlPSL = () => {
 
@@ -26,7 +27,7 @@ const ControlPSL = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigatePSL state={state} setState={setState} />
-                <GamesPSL />
+                <PSLGames />
             </View>
         )
     }
