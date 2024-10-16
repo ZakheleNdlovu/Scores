@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import News from './News'
 import Games from './Games'
 import Navigators from './Navigators'
+import NBAGamesNav from './NBAGamesNav'
+import NBAStandings from './NBAStandings'
+import NBATeams from './NBATeams'
 
 const ControlB = () => {
 
@@ -24,7 +27,23 @@ const ControlB = () => {
         return (
             <View>
                 <Navigators state={state} setState={setState} />
-                <Games />
+                <NBAGamesNav />
+            </View>
+        )
+    }
+    else if (state === 3) {
+        return (
+            <View style={{ height: 610 }}>
+                <Navigators state={state} setState={setState} />
+                <NBAStandings />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 610 }}>
+                <Navigators state={state} setState={setState} />
+                <NBATeams />
             </View>
         )
     }

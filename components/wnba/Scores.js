@@ -1,121 +1,147 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
 
-const Scores = () => {
+const Scores = ({ navigation }) => {
 
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [games, setGames] = useState([])
     const [error, setError] = useState('')
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard')
-                const data = await response.json()
-                setData(data.events)
 
+        const getGames = async () => {
+            try {
+                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard')
+                const games = await response.json()
+                setGames(games.events)
             }
             catch (error) {
-                setError(error.token)
+                setError(error)
             }
             finally {
                 setLoading(false)
             }
         }
-        getData()
+        getGames()
     }, [])
 
     if (loading) {
-        return <Text>loading...</Text>
+        return (
+            <View style={{ width: 350, height: 600, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Loading...</Text>
+            </View>
+        )
     }
-
     if (error) {
-        return <Text>error:{error}</Text>
+        return (
+            <View style={{ width: 350, height: 600, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Error: {error}</Text>
+            </View>
+        )
     }
+
     return (
-        <View >
-            <FlatList data={data} keyExtractor={(item) => item.id.toString()} renderItem={({ item }) => {
-                if (item.competitions[0].attendance === 0) {
-                    return (
-                        <View style={{ paddingBottom: 5 }}>
-                            <View style={styles.view}>
-                                <View style={styles.innerview}>
-                                    <Text style={styles.header}>{item.name}</Text>
-                                    <Text>{item.competitions[0].venue.fullName}</Text>
-                                    <Text>{item.shortName}</Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 200 }}>
-                                    <View style={{ alignItems: 'center' }}>
-
-                                        <Text style={styles.teamname}>{item.competitions[0].competitors[1].team.name}</Text>
-                                        <View style={styles.scorebox}>
-                                            <Text style={styles.score}>-</Text>
+        <View>
+            <FlatList
+                data={games}
+                renderItem={({ item }) => {
+                    if (item.competitions[0].status.type.state === 'post') {
+                        return (
+                            <TouchableOpacity onPress={() => navigation.navigate('Stats', { mame: item })}>
+                                <View>
+                                    <View style={styles.box}>
+                                        <Text>{item.shortName}</Text>
+                                        <View>
+                                            <View style={styles.homeTeam}>
+                                                <View style={{ width: 210, flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
+                                                </View>
+                                                <View style={{ width: 30 }}></View>
+                                                <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].score}</Text>
+                                            </View>
+                                            <View style={styles.homeTeam}>
+                                                <View style={{ width: 210, flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
+                                                </View>
+                                                <View style={{ width: 30 }}></View>
+                                                <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].score}</Text>
+                                                <View style={{ width: 20 }}></View>
+                                                <Text>{item.competitions[0].status.type.detail}</Text>
+                                            </View>
                                         </View>
                                     </View>
-                                    <View style={{ padding: 10 }}>
-                                        <Text>VS</Text>
-                                    </View>
-                                    <View style={{ alignItems: 'center' }}>
-                                        <Text style={styles.teamname}>{item.competitions[0].competitors[0].team.name}</Text>
-                                        <View style={styles.scorebox}>
-                                            <Text style={styles.score}>-</Text>
-                                        </View>
-
-                                    </View>
-
-
+                                    <View style={{ height: 2 }}></View>
                                 </View>
-                                <View style={{ width: 330, alignItems: 'center ' }}>
-                                    <Text>{item.competitions[0].status.type.detail}</Text>
-                                    <Text>{item.season.year}  {item.season.slug}</Text>
-                                </View>
-
-
-                            </View>
-                        </View>
-                    )
-                }
-                else {
-                    return (
-                        <View style={{ paddingBottom: 5 }}>
-                            <View style={styles.view}>
-                                <View style={styles.innerview}>
-                                    <Text style={styles.header}>{item.name}</Text>
-                                    <Text>{item.competitions[0].venue.fullName}</Text>
-                                    <Text>{item.shortName}</Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 200 }}>
-                                    <View style={{ alignItems: 'center' }}>
-
-                                        <Text style={styles.teamname}>{item.competitions[0].competitors[1].team.name}</Text>
-                                        <View style={styles.scorebox}>
-                                            <Text style={styles.score}>{item.competitions[0].competitors[1].score}</Text>
+                            </TouchableOpacity>
+                        )
+                    }
+                    else if (item.competitions[0].status.type.state === 'pre') {
+                        return (
+                            <TouchableOpacity onPress={() => navigation.navigate('Stats', { mame: item })}>
+                                <View>
+                                    <View style={styles.box}>
+                                        <Text>{item.shortName}</Text>
+                                        <View>
+                                            <View style={styles.homeTeam}>
+                                                <View style={{ width: 155, flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
+                                                </View>
+                                                <View style={{ width: 30 }}></View>
+                                                <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].score}</Text>
+                                            </View>
+                                            <View style={styles.homeTeam}>
+                                                <View style={{ width: 155, flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
+                                                </View>
+                                                <View style={{ width: 30 }}></View>
+                                                <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].score}</Text>
+                                                <View style={{ width: 20 }}></View>
+                                                <Text>{item.competitions[0].status.type.detail.slice(5, 17)} {item.competitions[0].status.type.detail.slice(21, 32)}</Text>
+                                            </View>
                                         </View>
                                     </View>
-                                    <View style={{ padding: 10 }}>
-                                        <Text>VS</Text>
-                                    </View>
-                                    <View style={{ alignItems: 'center' }}>
-                                        <Text style={styles.teamname}>{item.competitions[0].competitors[0].team.name}</Text>
-                                        <View style={styles.scorebox}>
-                                            <Text style={styles.score}>{item.competitions[0].competitors[0].score}</Text>
+                                    <View style={{ height: 2 }}></View>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    }
+                    else if (item.competitions[0].status.type.state === 'in') {
+                        return (
+                            <TouchableOpacity onPress={() => navigation.navigate('Stats', { mame: item })}>
+                                <View>
+                                    <View style={styles.box}>
+                                        <Text>{item.shortName}</Text>
+                                        <View>
+                                            <View style={styles.homeTeam}>
+                                                <View style={{ width: 170, flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
+                                                </View>
+                                                <View style={{ width: 30 }}></View>
+                                                <Text style={styles.homeTeamText1}>{item.competitions[0].competitors[0].score}</Text>
+                                            </View>
+                                            <View style={styles.homeTeam}>
+                                                <View style={{ width: 170, flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
+                                                </View>
+                                                <View style={{ width: 30 }}></View>
+                                                <Text style={styles.homeTeamText1}>{item.competitions[0].competitors[1].score}</Text>
+                                                <View style={{ width: 20 }}></View>
+                                                <Text>{item.competitions[0].status.type.shortDetail}</Text>
+                                            </View>
                                         </View>
-
                                     </View>
-
-
+                                    <View style={{ height: 2 }}></View>
                                 </View>
-                                <View style={{ height: 30 }}>
-                                    <Text >{item.competitions[0].status.displayClock}</Text>
-                                </View>
-
-
-                            </View>
-                        </View>
-                    )
-                }
-            }} />
-
+                            </TouchableOpacity>
+                        )
+                    }
+                }} />
         </View>
     )
 }
@@ -123,37 +149,29 @@ const Scores = () => {
 export default Scores
 
 const styles = StyleSheet.create({
-    view: {
+    box: {
         width: 357,
-        alignItems: 'center',
         borderWidth: 1,
+        borderStyle: 'dotted',
         borderColor: 'black',
-        borderStyle: 'solid',
-        padding: 10,
-        borderRadius: 5,
-        justifyContent: 'center'
+        alignItems: 'center',
+        backgroundColor: 'lightblue',
+        borderRadius: 5
+    },
+    homeTeam: {
+        flexDirection: 'row',
+        width: 357,
+        alignItems: 'flex-start',
+        paddingLeft: 10,
 
     },
-    innerview: {
-        alignItems: 'center'
+    homeTeamText: {
+        fontSize: 18,
+        fontWeight: 'bold'
     },
-    header: {
-        fontSize: 20
-    },
-    teamname: {
-        fontSize: 17
-    },
-    scorebox: {
-        width: 30,
-        height: 30,
-        alignItems: 'center',
-        backgroundColor: 'lightgray',
-        justifyContent: 'center',
-    },
-    score: {
-        fontSize: 18
-    },
-    gameclock: {
-        height: 40
+    homeTeamText1: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'red'
     }
 })

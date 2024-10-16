@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Headlines from './Headlines'
 import Scores from './Scores'
 import Navigation from './Navigation'
+import WNBAGamesNav from './WNBAGamesNav'
 
 const ControlW = () => {
 
@@ -24,7 +25,7 @@ const ControlW = () => {
         return (
             <View>
                 <Navigation state={state} setState={setState} />
-                <Scores />
+                <WNBAGamesNav />
             </View>
         )
     }
