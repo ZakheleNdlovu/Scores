@@ -1,36 +1,27 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 
-const Navigation = ({ state, setState }) => {
+const StatNav = ({ state, setState }) => {
 
     return (
         <View style={styles.navbar}>
             <View style={styles.box}>
                 <TouchableOpacity onPress={() => setState(state = 0)}>
-                    <Text>Headlines</Text>
+                    <Text>Game Stats</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.box}>
                 <TouchableOpacity onPress={() => setState(state = 2)}>
-                    <Text>Games</Text>
+                    <Text>Leaders</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.box}>
-                <TouchableOpacity onPress={() => setState(state = 3)}>
-                    <Text>Standings</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
-                <TouchableOpacity onPress={() => setState(state = 4)}>
-                    <Text>Teams</Text>
-                </TouchableOpacity>
-            </View>
+
 
         </View>
     )
 }
 
-export default Navigation
+export default StatNav
 
 const styles = StyleSheet.create({
     navbar: {

@@ -25,7 +25,7 @@ const ControlB = () => {
     }
     else if (state === 2) {
         return (
-            <View>
+            <View >
                 <Navigators state={state} setState={setState} />
                 <NBAGamesNav />
             </View>

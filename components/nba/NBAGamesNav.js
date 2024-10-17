@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import Games from './Games'
 import GameStats from './GameStats'
+import GameLeaders from './GameLeaders'
 
 const NBAGamesNav = () => {
 
@@ -14,6 +15,8 @@ const NBAGamesNav = () => {
             <Stack.Navigator>
                 <Stack.Screen name='Games' component={Games} />
                 <Stack.Screen name='Stats' component={GameStats} />
+                <Stack.Screen name='Leaders' component={GameLeaders} />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -2,10 +2,9 @@ import { View, Text } from 'react-native'
 import React, { useState } from 'react'
 import NavigateEPL from './NavigateEPL'
 import HeadlinesEPL from './HeadlinesEPL'
-import GamesEPL from './GamesEPL'
 import EPLTable from './EPLTable'
 import EPLTeams from './EPLTeams'
-import PremGames from './PremGames'
+import EPLGamesNav from './EPLGameNav'
 
 const ControlEPL = () => {
 
@@ -27,7 +26,7 @@ const ControlEPL = () => {
         return (
             <View style={{ height: 600 }}>
                 <NavigateEPL state={state} setState={setState} />
-                <PremGames />
+                <EPLGamesNav />
             </View>
         )
     }

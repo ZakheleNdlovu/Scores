@@ -54,16 +54,16 @@ const Games = ({ navigation }) => {
                                         <View>
                                             <View style={styles.homeTeam}>
                                                 <View style={{ width: 210, flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
-                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
+                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
                                                 </View>
                                                 <View style={{ width: 30 }}></View>
                                                 <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].score}</Text>
                                             </View>
                                             <View style={styles.homeTeam}>
                                                 <View style={{ width: 210, flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
-                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
+                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
                                                 </View>
                                                 <View style={{ width: 30 }}></View>
                                                 <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].score}</Text>
@@ -86,16 +86,16 @@ const Games = ({ navigation }) => {
                                         <View>
                                             <View style={styles.homeTeam}>
                                                 <View style={{ width: 155, flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
-                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
+                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
                                                 </View>
                                                 <View style={{ width: 30 }}></View>
                                                 <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].score}</Text>
                                             </View>
                                             <View style={styles.homeTeam}>
                                                 <View style={{ width: 155, flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
-                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
+                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
                                                 </View>
                                                 <View style={{ width: 30 }}></View>
                                                 <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].score}</Text>
@@ -118,16 +118,16 @@ const Games = ({ navigation }) => {
                                         <View>
                                             <View style={styles.homeTeam}>
                                                 <View style={{ width: 170, flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
-                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
+                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
                                                 </View>
                                                 <View style={{ width: 30 }}></View>
                                                 <Text style={styles.homeTeamText1}>{item.competitions[0].competitors[1].score}</Text>
                                             </View>
                                             <View style={styles.homeTeam}>
                                                 <View style={{ width: 170, flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={30} height={30} />
-                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[1].team.displayName}</Text>
+                                                    <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={30} height={30} />
+                                                    <Text style={styles.homeTeamText}>{item.competitions[0].competitors[0].team.displayName}</Text>
                                                 </View>
                                                 <View style={{ width: 30 }}></View>
                                                 <Text style={styles.homeTeamText1}>{item.competitions[0].competitors[0].score}</Text>
