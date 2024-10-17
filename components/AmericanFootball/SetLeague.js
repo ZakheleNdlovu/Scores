@@ -2,7 +2,8 @@ import { View, Text } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import LeagueNav from './LeagueNav'
 import ControlF from './ControlF'
-import ControlNCAA from './NCAA/ControlNCAA'
+import ControlNCAA from '../NCAA/ControlNCAA'
+
 
 const SetLeague = () => {
 

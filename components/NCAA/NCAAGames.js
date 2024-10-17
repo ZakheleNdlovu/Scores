@@ -1,7 +1,7 @@
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
-const Games = ({ navigation }) => {
+const NCAAGames = ({ navigation }) => {
 
     const [games, setGames] = useState([])
     const [error, setError] = useState('')
@@ -11,7 +11,7 @@ const Games = ({ navigation }) => {
 
         const getGames = async () => {
             try {
-                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard')
+                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard')
                 const games = await response.json()
                 setGames(games.events)
             }
@@ -146,7 +146,7 @@ const Games = ({ navigation }) => {
     )
 }
 
-export default Games
+export default NCAAGames
 
 const styles = StyleSheet.create({
     box: {

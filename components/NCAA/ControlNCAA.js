@@ -1,10 +1,11 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
+import NCAANav from './NCAANav'
 
-import NCAAGames from './NCAAGames'
-import NCAAHeadlines from './NCAAHeadlines'
-import NavigateNCAA from './NavigateNCAA'
+import NCAATeams from './NCAATeams'
 import NCAAStandings from './NCAAStandings'
+import StatNav from './StatNav'
+import NCAAHeadlines from './NCAAHeadlines'
 
 const ControlNCAA = () => {
 
@@ -14,7 +15,7 @@ const ControlNCAA = () => {
         return (
             <View style={{ height: 620 }}>
 
-                <NavigateNCAA state={state} setState={setState} />
+                <NCAANav state={state} setState={setState} />
                 <NCAAHeadlines />
 
             </View>
@@ -23,16 +24,24 @@ const ControlNCAA = () => {
     else if (state === 2) {
         return (
             <View style={{ height: 620 }}>
-                <NavigateNCAA state={state} setState={setState} />
-                <NCAAGames />
+                <NCAANav state={state} setState={setState} />
+                <StatNav />
             </View>
         )
     }
     else if (state === 3) {
         return (
             <View style={{ height: 620 }}>
-                <NavigateNCAA state={state} setState={setState} />
+                <NCAANav state={state} setState={setState} />
                 <NCAAStandings />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 620 }}>
+                <NCAANav state={state} setState={setState} />
+                <NCAATeams />
             </View>
         )
     }

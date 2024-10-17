@@ -3,18 +3,19 @@ import React from 'react'
 
 const LeagueNav = ({ state, setState }) => {
     return (
-        <View style={styles.header}>
-            <View style={styles.text}>
-                <TouchableOpacity onPress={() => setState(state = 1)}>
-                    <Text >NFL</Text>
-                </TouchableOpacity>
+        <View>
+            <View style={styles.header}>
+                <View style={styles.text}>
+                    <TouchableOpacity onPress={() => setState(state = 1)}>
+                        <Text >NFL</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.text}>
+                    <TouchableOpacity onPress={() => setState(state = 2)}>
+                        <Text >NCAA</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.text}>
-                <TouchableOpacity onPress={() => setState(state = 2)}>
-                    <Text >NCAA</Text>
-                </TouchableOpacity>
-            </View>
-
         </View>
     )
 }
@@ -26,20 +27,36 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        width: 357,
+        width: 359,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        overflow: 'scroll',
+        backgroundColor: 'lightblue'
     },
     text: {
         fontSize: 17,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: 'black',
-        width: 178,
+        borderColor: 'lightblue',
+        width: 179,
+        height: 25,
+        justifyContent: 'center',
+
+        alignItems: 'center',
+        backgroundColor: 'lightgreen',
+        borderRadius: 5,
+
+    },
+    text1: {
+        fontSize: 17,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: 'lightblue',
+        width: 89,
         height: 25,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'lightgray',
+        backgroundColor: 'lightgreen',
         borderRadius: 5
     }
 })

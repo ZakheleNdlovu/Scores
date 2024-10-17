@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import LTeams from './components/Bundesliga/LTeams';
 import MLSTeams from './components/mls/MLSTeams';
 import HomeControl from './components/HomeControl'
+import NCAAStandings from './components/NCAA/NCAAStandings';
 
 export default function App() {
 

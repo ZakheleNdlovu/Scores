@@ -1,296 +1,610 @@
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
+import React from 'react'
 
-const GamesStatsNFL = () => {
+const GameStatsNFL = ({ navigation, route }) => {
 
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState('')
+    if (route.params.mame.competitions[0].status.type.state === "pre") {
+        return (
+            <View>
+                <TouchableOpacity>
+                    <View style={styles.box}>
+                        <Text>{route.params.mame.name}</Text>
+                        <View style={styles.homeTeam}>
+                            <View style={styles.teams}>
+                                <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[1].team.displayName}</Text>
+                                <Image source={{ uri: route.params.mame.competitions[0].competitors[1].team.logo }} width={50} height={50} />
+                                <View style={styles.score}>
+                                    <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[0].score}</Text>
+                                </View>
+                            </View>
 
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard')
-                const data = await response.json()
-                setData(data.events)
+                            <View style={styles.teams}>
+                                <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[0].team.displayName}</Text>
+                                <Image source={{ uri: route.params.mame.competitions[0].competitors[0].team.logo }} width={50} height={50} />
+                                <View style={styles.score}>
+                                    <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[0].score}</Text>
+                                </View>
+                            </View>
+                            <View>
 
-            }
-            catch (error) {
-                setError(error.token)
-            }
-            finally {
-                setLoading(false)
-            }
-        }
-        getData()
-    }, [])
+                            </View>
+                        </View>
+                        <View style={{ width: 357, flexDirection: 'row' }}>
+                            <View style={{ width: 170, alignItems: 'center' }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].records[0].summary}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center' }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].records[0].summary}</Text>
+                            </View>
+                        </View>
 
-    if (loading) {
-        return <Text>loading...</Text>
+                    </View>
+                </TouchableOpacity>
+                <ScrollView>
+                    <View style={{ width: 357, alignItems: 'center' }}>
+                        <View>
+                            <Text>{route.params.mame.competitions[0].status.type.detail}</Text>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}> OverUnder</Text>
+                        </View>
+                        <View>
+                            <Text>{route.params.mame.competitions[0].odds[0].overUnder}</Text>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}> Favorite</Text>
+                        </View>
+                        <View>
+                            <Text>{route.params.mame.competitions[0].odds[0].details}</Text>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}> OverUnder</Text>
+                        </View>
+                        <View>
+                            <Text>{route.params.mame.competitions[0].odds[0].overUnder}</Text>
+                        </View>
+
+                    </View>
+                    <View >
+
+
+                    </View>
+                </ScrollView>
+            </View>
+        )
     }
+    else if (route.params.mame.competitions[0].status.type.state === "post") {
+        return (
+            <View style={{}}>
+                <TouchableOpacity onPress={() => navigation.navigate('Leaders', { mame: route.params.mame })}>
+                    <View style={styles.box}>
+                        <Text>{route.params.mame.name}</Text>
+                        <View style={styles.homeTeam}>
+                            <View style={styles.teams}>
+                                <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[1].team.displayName}</Text>
+                                <Image source={{ uri: route.params.mame.competitions[0].competitors[1].team.logo }} width={50} height={50} />
+                                <View style={styles.score}>
+                                    <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[1].score}</Text>
+                                </View>
+                            </View>
 
-    if (error) {
-        return <Text>error:{error}</Text>
-    }
-    return (
-        <View style={{ paddingBottom: 10 }}>
-            <FlatList
-                data={data}
-                keyExtractor={(item) => item.id.toString()} renderItem={({ item }) => {
-                    if (item.competitions[0].attendance === 0) {
-                        return (
-                            <View style={{ paddingBottom: 5 }}>
-                                <View style={styles.view}>
-                                    <View style={styles.innerview}>
-                                        <Text style={styles.header}>{item.name}</Text>
+                            <View style={styles.teams}>
+                                <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[0].team.displayName}</Text>
+                                <Image source={{ uri: route.params.mame.competitions[0].competitors[0].team.logo }} width={50} height={50} />
+                                <View style={styles.score}>
+                                    <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[0].score}</Text>
+                                </View>
+                            </View>
 
+                        </View>
+                        <View style={{ alignItems: 'center' }}>
+                            <Text style={{ fontSize: 16 }}>{route.params.mame.competitions[0].status.type.shortDetail}</Text>
+                            <View style={{ height: 1 }}>
+                            </View>
+                            <Text>Tap to see game leaders</Text>
+                            <View style={{ height: 1 }}>
+                            </View>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <ScrollView>
+                    <View style={{ width: 360, alignItems: 'center' }}>
+                        <View>
+                            <Text style={{ fontSize: 20 }}>Game Stats</Text>
+                        </View>
 
-                                    </View>
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 200 }}>
-                                        <View style={{ alignItems: 'center' }}>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rebounds</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                            <Text style={styles.teamname}>{item.competitions[0].competitors[1].team.shortDisplayName}</Text>
-                                            <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={50} height={50} />
-                                            <View style={styles.scorebox}>
-                                                <Text style={styles.score}>{item.competitions[0].competitors[1].score}</Text>
-                                            </View>
-                                        </View>
-                                        <View style={{ padding: 10 }}>
-                                            <Text>VS</Text>
-                                        </View>
-                                        <View style={{ alignItems: 'center' }}>
-                                            <View >
-                                                <Text style={styles.teamname}>{item.competitions[0].competitors[0].team.shortDisplayName}</Text>
-                                                <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={50} height={50} />
-                                            </View>
-                                            <View style={styles.scorebox}>
-                                                <Text style={styles.score}>{item.competitions[0].competitors[0].score}</Text>
-                                            </View>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[0].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[0].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Assists</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[2].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[2].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Field Goals made</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                        </View>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[4].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[4].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Field Goal PCT</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[5].displayValue}%</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[5].displayValue}%</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Three Pointers made</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                    </View>
-                                    <View style={{ width: 330, alignItems: 'center', justifyContent: 'center' }}>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[12].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[12].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Three Point PCT</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[10].displayValue}%</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[10].displayValue}%</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Free throws Made</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                    </View>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[8].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[8].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Free throw PCT</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                    <View>
-                                        <Text style={{ fontSize: 20 }}>Leaders</Text>
-
-                                    </View>
-                                    <View style={styles.goalLeaders}>
-                                        <View style={styles.statsBox1}>
-                                            <Text style={styles.playerHeader}>{item.competitions[0].competitors[1].leaders[0].leaders[0].athlete.displayName}</Text>
-                                            <Text>No: {item.competitions[0].competitors[1].leaders[0].leaders[0].athlete.jersey}</Text>
-                                            <Text>Position: {item.competitions[0].competitors[1].leaders[0].leaders[0].athlete.position.abbreviation}</Text>
-                                            <Text>{item.competitions[0].competitors[1].leaders[0].displayName}</Text>
-                                            <Text>{item.competitions[0].competitors[1].leaders[0].leaders[0].value}</Text>
-                                        </View>
-                                        <View style={styles.statsBox1}>
-                                            <Text style={styles.playerHeader}>{item.competitions[0].competitors[0].leaders[0].leaders[0].athlete.displayName}</Text>
-                                            <Text>No: {item.competitions[0].competitors[0].leaders[0].leaders[0].athlete.jersey}</Text>
-                                            <Text>Position: {item.competitions[0].competitors[0].leaders[0].leaders[0].athlete.position.abbreviation}</Text>
-                                            <Text>{item.competitions[0].competitors[0].leaders[0].displayName}</Text>
-                                            <Text>{item.competitions[0].competitors[0].leaders[0].leaders[0].value}</Text>
-
-                                        </View>
-
-                                    </View>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[6].displayValue}%</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[6].displayValue}%</Text>
+                            </View>
+                        </View>
+                        <View style={{ alignItems: 'center', width: 357 }}>
+                            <View style={{ height: 7 }}></View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[0].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[0].leaders[0].value})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[0].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[0].leaders[0].value})</Text>
+                                </View>
+                            </View>
+                            <View style={styles.statheader}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rebounds</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[1].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[1].leaders[0].value})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[1].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[1].leaders[0].value})</Text>
+                                </View>
+                            </View>
+                            <View style={styles.statheader}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Assists</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[2].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[2].leaders[0].value})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[2].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[2].leaders[0].value})</Text>
+                                </View>
+                            </View>
+                            <View style={styles.statheader}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rating</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[3].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[3].leaders[0].value.toFixed(2)})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[3].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[3].leaders[0].value.toFixed(2)})</Text>
                                 </View>
 
                             </View>
-                        )
-                    }
-                    else {
-                        return (
-                            <View style={{ paddingBottom: 5 }}>
-                                <View style={styles.view}>
-                                    <View style={styles.innerview}>
-                                        <Text style={styles.header}>{item.name}</Text>
 
 
-                                    </View>
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 200 }}>
-                                        <View style={{ alignItems: 'center' }}>
 
-                                            <Text style={styles.teamname}>{item.competitions[0].competitors[1].team.shortDisplayName}</Text>
-                                            <Image source={{ uri: item.competitions[0].competitors[1].team.logo }} width={50} height={50} />
-                                            <View style={styles.scorebox}>
-                                                <Text style={styles.score}>{item.competitions[0].competitors[1].score}</Text>
-                                            </View>
-                                        </View>
-                                        <View style={{ padding: 10 }}>
-                                            <Text>VS</Text>
-                                        </View>
-                                        <View style={{ alignItems: 'center' }}>
-                                            <View >
-                                                <Text style={styles.teamname}>{item.competitions[0].competitors[0].team.shortDisplayName}</Text>
-                                                <Image source={{ uri: item.competitions[0].competitors[0].team.logo }} width={50} height={50} />
-                                            </View>
-                                            <View style={styles.scorebox}>
-                                                <Text style={styles.score}>{item.competitions[0].competitors[0].score}</Text>
-                                            </View>
+                        </View>
 
+                    </View>
+                </ScrollView>
 
-                                        </View>
+            </View>
 
+        )
+    }
+    else if (route.params.mame.competitions[0].status.type.description === "In Progress") {
+        return (
+            <View style={{}}>
+                <TouchableOpacity onPress={() => navigation.navigate('Leaders', { mame: route.params.mame })}>
+                    <View style={styles.box}>
+                        <Text>{route.params.mame.name}</Text>
+                        <View style={styles.homeTeam}>
+                            <View style={styles.teams}>
+                                <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[1].team.displayName}</Text>
+                                <Image source={{ uri: route.params.mame.competitions[0].competitors[1].team.logo }} width={50} height={50} />
+                                <View style={styles.score}>
+                                    <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[1].score}</Text>
+                                </View>
+                            </View>
 
-                                    </View>
-                                    <View style={{ width: 330, alignItems: 'center', justifyContent: 'center' }}>
+                            <View style={styles.teams}>
+                                <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[0].team.displayName}</Text>
+                                <Image source={{ uri: route.params.mame.competitions[0].competitors[0].team.logo }} width={50} height={50} />
+                                <View style={styles.score}>
+                                    <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[0].score}</Text>
+                                </View>
+                            </View>
 
+                        </View>
+                        <View style={{ alignItems: 'center' }}>
+                            <Text style={{ fontSize: 16 }}>{route.params.mame.competitions[0].status.type.shortDetail}</Text>
+                            <View style={{ height: 1 }}>
+                            </View>
+                            <Text>Tap to see game leaders</Text>
+                            <View style={{ height: 1 }}>
+                            </View>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <ScrollView>
+                    <View style={{ width: 360, alignItems: 'center' }}>
+                        <View>
+                            <Text style={{ fontSize: 20 }}>Game Stats</Text>
+                        </View>
 
-                                    </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rebounds</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                    <View style={{ width: 330, alignItems: 'center' }}>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[0].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[0].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Assists</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                        <Text>{item.competitions[0].status.type.detail}</Text>
-                                        <Text style={styles.header}>{item.competitions[0].notes[0].headline}</Text>
-                                        <Text style={{ textDecorationLine: 'underline', fontSize: 17 }}>{item.competitions[0].series.summary}</Text>
-                                    </View>
-                                    <View style={styles.goalLeaders}>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[2].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[2].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Field Goals made</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                        <View>
-                                            <Text>{item.competitions[0].headlines[0].type}</Text>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[4].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[4].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Field Goal PCT</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                        </View>
-                                        <View style={styles.statsBox}>
-                                            <Text style={{ fontSize: 20 }}>{item.competitions[0].headlines[0].video[0].headline}</Text>
-                                            <Text>{item.competitions[0].headlines[0].description}</Text>
-                                            <View style={styles.statsBox1}>
-                                                <Text style={styles.header}>Leaders ({item.competitions[0].competitors[0].team.shortDisplayName})</Text>
-                                            </View>
-                                            <View style={{ width: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text>Points</Text>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 150 }}>
-                                                    <Text>{item.competitions[0].competitors[0].leaders[0].leaders[0].athlete.displayName}
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[5].displayValue}%</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[5].displayValue}%</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Three Pointers made</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                                    </Text>
-                                                    <Text>({item.competitions[0].competitors[0].leaders[0].leaders[0].displayValue})</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ width: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text>Rebounds</Text>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 150 }}>
-                                                    <Text>{item.competitions[0].competitors[0].leaders[1].leaders[0].athlete.displayName}
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[12].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[12].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Three Point PCT</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                                    </Text>
-                                                    <Text>({item.competitions[0].competitors[0].leaders[1].leaders[0].displayValue})</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ width: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text>Assists</Text>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 150 }}>
-                                                    <Text>{item.competitions[0].competitors[0].leaders[2].leaders[0].athlete.displayName}
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[10].displayValue}%</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[10].displayValue}%</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Free throws Made</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                                    </Text>
-                                                    <Text>({item.competitions[0].competitors[0].leaders[2].leaders[0].displayValue})</Text>
-                                                </View>
-                                            </View>
-                                        </View>
-                                        <View style={styles.statsBox}>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[8].displayValue}</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[8].displayValue}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.statheader}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Free throw PCT</Text>
+                        </View>
+                        <View style={{ width: 358, alignItems: 'center', flexDirection: 'row' }}>
 
-                                            <View style={styles.statsBox1}>
-                                                <Text style={styles.header}>Leaders ({item.competitions[0].competitors[1].team.shortDisplayName})</Text>
-                                            </View>
-                                            <View style={{ width: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text>Points</Text>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 150 }}>
-                                                    <Text>{item.competitions[0].competitors[1].leaders[0].leaders[0].athlete.displayName}
-
-                                                    </Text>
-                                                    <Text>({item.competitions[0].competitors[1].leaders[0].leaders[0].displayValue})</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ width: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text>Rebounds</Text>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 150 }}>
-                                                    <Text>{item.competitions[0].competitors[1].leaders[1].leaders[0].athlete.displayName}
-
-                                                    </Text>
-                                                    <Text>({item.competitions[0].competitors[1].leaders[1].leaders[0].displayValue})</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ width: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text>Assists</Text>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 150 }}>
-                                                    <Text>{item.competitions[0].competitors[1].leaders[2].leaders[0].athlete.displayName}
-
-                                                    </Text>
-                                                    <Text>({item.competitions[0].competitors[1].leaders[2].leaders[0].displayValue})</Text>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
+                            <View style={{ width: 170, alignItems: 'center', paddingLeft: 30 }}>
+                                <Text>{route.params.mame.competitions[0].competitors[1].statistics[6].displayValue}%</Text>
+                            </View>
+                            <View style={{ width: 170, alignItems: 'center', }}>
+                                <Text>{route.params.mame.competitions[0].competitors[0].statistics[6].displayValue}%</Text>
+                            </View>
+                        </View>
+                        <View style={{ alignItems: 'center', width: 357 }}>
+                            <View style={{ height: 7 }}></View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[0].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[0].leaders[0].value})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[0].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[0].leaders[0].value})</Text>
+                                </View>
+                            </View>
+                            <View style={styles.statheader}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rebounds</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[1].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[1].leaders[0].value})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[1].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[1].leaders[0].value})</Text>
+                                </View>
+                            </View>
+                            <View style={styles.statheader}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Assists</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[2].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[2].leaders[0].value})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[2].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[2].leaders[0].value})</Text>
+                                </View>
+                            </View>
+                            <View style={styles.statheader}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rating</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: 165, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[3].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[3].leaders[0].value.toFixed(2)})</Text>
+                                </View>
+                                <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                                    <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[3].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[3].leaders[0].value.toFixed(2)})</Text>
                                 </View>
 
                             </View>
-                        )
-                    }
-                }} />
 
-        </View>
-    )
+
+
+                        </View>
+
+                    </View>
+                </ScrollView>
+
+            </View>
+
+        )
+    }
+    else if (route.params.mame.competitions[0].status.type.description === "Halftime") {
+        return (
+            <View>
+                <View style={styles.box}>
+                    <Text>{route.params.mame.name}</Text>
+                    <View style={styles.homeTeam}>
+                        <View style={styles.teams}>
+                            <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[1].team.displayName}</Text>
+                            <Image source={{ uri: route.params.mame.competitions[0].competitors[1].team.logo }} width={50} height={50} />
+                            <View style={styles.score}>
+                                <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[0].score}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.teams}>
+                            <Text style={styles.homeTeamText}>{route.params.mame.competitions[0].competitors[0].team.displayName}</Text>
+                            <Image source={{ uri: route.params.mame.competitions[0].competitors[0].team.logo }} width={50} height={50} />
+                            <View style={styles.score}>
+                                <Text style={{ color: 'white', fontSize: 25 }}>{route.params.mame.competitions[0].competitors[1].score}</Text>
+                            </View>
+                        </View>
+
+                    </View>
+                    <View>
+                        <Text style={{ fontSize: 16 }}>{route.params.mame.competitions[0].status.type.shortDetail}</Text>
+                    </View>
+                </View>
+                <View style={{ alignItems: 'center', width: 357 }}>
+                    <View >
+                        <Text style={{ fontSize: 20 }}>Leaders</Text>
+
+                    </View>
+                    <View style={styles.statheader}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Points</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ width: 165, paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[0].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[0].leaders[0].value})</Text>
+                        </View>
+                        <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[0].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[0].leaders[0].value})</Text>
+                        </View>
+                    </View>
+                    <View style={styles.statheader}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rebounds</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ width: 165, paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[1].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[1].leaders[0].value})</Text>
+                        </View>
+                        <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[1].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[1].leaders[0].value})</Text>
+                        </View>
+                    </View>
+                    <View style={styles.statheader}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Assists</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ width: 165, paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[2].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[2].leaders[0].value})</Text>
+                        </View>
+                        <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[2].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[2].leaders[0].value})</Text>
+                        </View>
+                    </View>
+                    <View style={styles.statheader}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Rating</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ width: 165, paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[1].leaders[3].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[1].leaders[3].leaders[0].value.toFixed(2)})</Text>
+                        </View>
+                        <View style={{ width: 165, alignItems: 'flex-end', paddingRight: 10 }}>
+                            <Text style={{ fontSize: 17 }}>{route.params.mame.competitions[0].competitors[0].leaders[3].leaders[0].athlete.fullName} ({route.params.mame.competitions[0].competitors[0].leaders[3].leaders[0].value.toFixed(2)})</Text>
+                        </View>
+                    </View>
+
+                </View>
+
+            </View>
+        )
+    }
+
+
 }
 
-export default GamesStatsNFL
+export default GameStatsNFL
 
 const styles = StyleSheet.create({
-    view: {
+    box: {
         width: 357,
-        alignItems: 'center',
-        padding: 5,
+        height: 170,
         borderWidth: 1,
+        borderStyle: 'dotted',
         borderColor: 'black',
-        borderStyle: 'solid',
-        borderRadius: 6, justifyContent: 'center'
-
-    },
-    innerview: {
         alignItems: 'center',
-        width: 340,
+        backgroundColor: 'lightblue',
+        borderRadius: 5,
+        flexDirection: 'column',
+        padding: 5,
+        justifyContent: 'space-evenly'
+    },
+    homeTeam: {
+        flexDirection: 'row',
+        width: 357,
+        alignItems: 'flex-start',
+        paddingLeft: 10,
 
-
     },
-    header: {
-        fontSize: 20
+    homeTeamText: {
+        fontSize: 18,
+        fontWeight: 'bold'
     },
-    teamname: {
-        fontSize: 17
+    homeTeamText1: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'red'
     },
-    scorebox: {
-        width: 30,
-        height: 30,
-        alignItems: 'center',
-        backgroundColor: 'lightgray',
-        justifyContent: 'center',
+    teams: {
+        width: 163,
+        alignItems: 'center'
     },
     score: {
-        fontSize: 18
-    },
-    gameclock: {
-        height: 40
-    },
-    goalLeaders: {
-        width: 340,
+        backgroundColor: 'black',
+        color: 'white',
+        padding: 5,
+        height: 35,
+        width: 55,
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'center',
+        borderRadius: 5
     },
-    statsBox: {
-        width: 345,
-
+    leaders: {
+        width: 177,
+        paddingLeft: 5,
+        alignItems: 'center'
     },
-    statsBox1: {
-        width: 345,
+    leaders1: {
+        width: 177,
+        paddingRight: 5,
+        alignItems: 'center'
+    },
+    statheader: {
+        width: 357,
+        height: 30,
         alignItems: 'center',
-
-    },
-    playerHeader: {
-        fontSize: 20,
-
+        justifyContent: 'center',
+        backgroundColor: 'lightblue',
+        borderRadius: 5
     }
 })

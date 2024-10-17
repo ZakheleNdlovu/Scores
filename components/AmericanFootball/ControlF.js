@@ -5,6 +5,8 @@ import Games from './Games'
 import Navigate from './Navigate'
 
 import NFLStandings from './NFLStandings'
+import StatsNav from './StatsNav'
+import NFLTeams from './NFLTeams'
 
 const ControlF = () => {
 
@@ -24,7 +26,7 @@ const ControlF = () => {
         return (
             <View style={{ height: 620 }}>
                 <Navigate state={state} setState={setState} />
-                <Games />
+                <StatsNav />
             </View>
         )
     }
@@ -33,6 +35,14 @@ const ControlF = () => {
             <View style={{ height: 620 }}>
                 <Navigate state={state} setState={setState} />
                 <NFLStandings />
+            </View>
+        )
+    }
+    else if (state === 4) {
+        return (
+            <View style={{ height: 620 }}>
+                <Navigate state={state} setState={setState} />
+                <NFLTeams />
             </View>
         )
     }
